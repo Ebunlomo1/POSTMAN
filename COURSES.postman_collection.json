@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "a047b1dd-c922-419f-bc3d-c0eb9f8167e6",
+		"name": "COURSES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23040363"
+	},
+	"item": [
+		{
+			"name": "CREATE COURSE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonResponse = pm.response.json();\r",
+							"pm.globals.set(\"courseId\" , jsonResponse.id);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});pm.globals.get(\"variable_key\");\r",
+							"\r",
+							"pm.test(\"Body matches title\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"postman\");\r",
+							"});\r",
+							"pm.test(\"Body matches description\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"mastering postman\");\r",
+							"});\r",
+							"pm.test(\"Body matches location\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"online\");\r",
+							"});\r",
+							"pm.test(\"Body matches premium\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"false\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches categoryId\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"2\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"advance postman\",\n    \"categoryId\": 2,\n    \"description\": \"postman for intermediate\",\n    \"courseUrl\": \"https://www.youtube.com/watch?v=8vXoMqWgbQQ\",\n    \"imageUrl\": \"https://source.unsplash.com/user/c_v_r/900x800\",\n    \"location\": \"online\",\n    \"isPremium\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{newUrl}}/api/courses",
+					"host": [
+						"{{newUrl}}"
+					],
+					"path": [
+						"api",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST COURSES",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.get(\"variable_key\");\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches title\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Cypress test course\");\r",
+							"});\r",
+							"pm.test(\"Body matches description\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Cypress Test Description\");\r",
+							"});\r",
+							"pm.test(\"Body matches location\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"online\");\r",
+							"});\r",
+							"pm.test(\"Body matches premium\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"true\");\r",
+							"});\r",
+							"pm.test(\"Body matches location\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"offline\");\r",
+							"});\r",
+							"pm.test(\"Body matches id\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"376\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{newUrl}}/api/courses",
+					"host": [
+						"{{newUrl}}"
+					],
+					"path": [
+						"api",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET COURSE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.get(\"variable_key\");\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches title\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"postman frenzy\");\r",
+							"});\r",
+							"pm.test(\"Body matches description\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"mastering postman\");\r",
+							"});\r",
+							"pm.test(\"Body matches location\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"online\");\r",
+							"});\r",
+							"pm.test(\"Body matches premium\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"false\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{newUrl}}/api/courses/{{courseId}}",
+					"host": [
+						"{{newUrl}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						"{{courseId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE COURSE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});pm.globals.get(\"variable_key\");\r",
+							"\r",
+							"pm.test(\"Body matches title\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"EB 112\");\r",
+							"});\r",
+							"pm.test(\"Body matches description\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"MIDNIGHT KNIGHTS\");\r",
+							"});\r",
+							"pm.test(\"Body matches location\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"offline\");\r",
+							"});\r",
+							"pm.test(\"Body matches premium\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"false\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\" : \"EB 112\",\n    \"categoryId\" : 2,\n    \"description\" : \"MIDNIGHT KNIGHTS\",\n    \"courseUrl\" : \"London Lagos Los Angeles\",\n    \"imageUrl\" : \"https://source.unsplash.com/user/c_v_r/900x800\",\n    \"location\": \"offline\",\n    \"isPremium\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{newUrl}}/api/courses/{{courseId}}",
+					"host": [
+						"{{newUrl}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						"{{courseId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE COURSE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{newUrl}}/api/courses/{{courseId}}",
+					"host": [
+						"{{newUrl}}"
+					],
+					"path": [
+						"api",
+						"courses",
+						"{{courseId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
